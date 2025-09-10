@@ -1,11 +1,22 @@
 import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, Image, FlatList } from "react-native";
+import products from '../data/products.json';
+import { imageKey } from "../constants/imageMap";
+
+const renderItem = ({ item }) => {
+    return (
+        <View style={styles.mainCard}>
+            <Image source={imageKey[item.imageKey]} style={{ width: 152, height: 215 }} />
+            {/* <Text>{item.title}</Text> */}
+        </View>
+    );
+};
 
 
 export default function SecondScreen() {
     const navigation = useNavigation();
     return (
-        <ScrollView style={styles.content}>
+        <View style={styles.content}>
             <View style={styles.container}>
 
                 <View style={styles.header}>
@@ -36,12 +47,21 @@ export default function SecondScreen() {
                     </View>
                 </View>
                 <View style={styles.mainConteiner}>
-                    <Image source={require('../assets/secondScreen/FeedImabe.png')} style={styles.mainCard} />
-                    <Image source={require('../assets/secondScreen/Pic.png')} style={styles.mainCard} />
+
+                    <FlatList
+                        data={products}   // <-- вместо data
+                        renderItem={renderItem}
+                        keyExtractor={item => item.id.toString()}
+                        numColumns={2}
+                        columnWrapperStyle={{ justifyContent: "space-between" }}
+                    />
+
+                    {/* <Image source={require('../assets/secondScreen/FeedImabe.png')} style={styles.mainCard} />
+                    <Image source={require('../assets/secondScreen/Pic.png')} style={styles.mainCard} /> */}
                 </View>
 
             </View>
-        </ScrollView>
+        </View>
     )
 }
 
@@ -135,15 +155,15 @@ const styles = StyleSheet.create({
         fontSize: 12,
     },
     mainConteiner: {
-        flexDirection:"row",
+        flexDirection: "row",
         marginTop: 20,
-        padding:10,
+        padding: 10,
         width: "100%",
         height: 944,
         backgroundColor: "white",
-        
+
     },
-    mainCard:{
+    mainCard: {
         width: 152,
         height: 215,
         margin: 5,

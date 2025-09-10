@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "imageKey": "p1",
+        "title": "пальто",
+        "likes": 0,
+        "liked": false
+    },
+    {
+        "id": 2,
+        "imageKey": "p2",
+        "title": "пальто",
+        "likes": 0,
+        "liked": false
+    },
+    {
+        "id": 3,
+        "imageKey": "p3",
+        "title": "пальто",
+        "likes": 0,
+        "liked": false
+    },
+    {
+        "id": 4,
+        "imageKey": "p4",
+        "title": "пальто",
+        "likes": 0,
+        "liked": false
+    }
+]
